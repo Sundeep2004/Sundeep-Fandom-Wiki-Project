@@ -1,21 +1,24 @@
 import requests
 from bs4 import BeautifulSoup
 import csv
+import json
+from tabulate import tabulate
 
 # ---------- CONFIGURATION ----------
-fandom_url = "https://memory-alpha.fandom.com/wiki/Portal:Main"  # Change this to your target Fandom page
-output_csv = "fandom_links.csv"
-base_url = "https://memory-alpha.fandom.com"  # Base Fandom URL
+FANDOM_URL = "https://memory-alpha.fandom.com/wiki/Portal:Main"  # Change to your target Fandom page
+OUTPUT_CSV = "fandom_links.csv"
+OUTPUT_JSON = "fandom_links.json"
+BASE_URL = "https://memory-alpha.fandom.com"  # Base Fandom URL
 # -----------------------------------
 
 def scrape_fandom_article(url):
-    print(f"Fetching article: {url}")
+    print(f"\n🔍 Fetching article: {url} ...")
     response = requests.get(url)
-    
+
     if response.status_code != 200:
-        print(f"Failed to retrieve page. Status code: {response.status_code}")
+        print(f"❌ Failed to retrieve page. Status code: {response.status_code}")
         return []
-    
+
     soup = BeautifulSoup(response.text, "html.parser")
     paragraphs = soup.find_all("p")  # Get only text from paragraphs
     dataset = []
@@ -37,10 +40,10 @@ def scrape_fandom_article(url):
                     "linked_word": linked_word,
                     "start": start_pos,
                     "end": end_pos,
-                    "url": base_url + href
+                    "url": BASE_URL + href
                 })
 
-    print(f"Extracted {len(dataset)} links.")
+    print(f"\n✅ Extracted {len(dataset)} links successfully!\n")
     return dataset
 
 def save_to_csv(dataset, output_file):
@@ -49,12 +52,24 @@ def save_to_csv(dataset, output_file):
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(dataset)
-    print(f"Dataset saved to {output_file}")
+    print(f"📁 CSV file saved: {output_file}")
+
+def save_to_json(dataset, output_file):
+    with open(output_file, 'w', encoding='utf-8') as jsonfile:
+        json.dump(dataset, jsonfile, indent=4, ensure_ascii=False)
+    print(f"📁 JSON file saved: {output_file}")
+
+def display_table(dataset):
+    table_data = [[d["linked_word"], d["start"], d["end"], d["url"]] for d in dataset]
+    print("\n📌 Extracted Links:\n")
+    print(tabulate(table_data, headers=["Linked Word", "Start", "End", "URL"], tablefmt="fancy_grid"))
 
 def main():
-    dataset = scrape_fandom_article(fandom_url)
+    dataset = scrape_fandom_article(FANDOM_URL)
     if dataset:
-        save_to_csv(dataset, output_csv)
+        save_to_csv(dataset, OUTPUT_CSV)
+        save_to_json(dataset, OUTPUT_JSON)
+        display_table(dataset)
 
 if __name__ == "__main__":
     main()

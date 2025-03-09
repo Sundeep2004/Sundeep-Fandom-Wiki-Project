@@ -1,0 +1,30 @@
+[
+    {
+        "sentence": "Memory Alpha is a collaborative project to create the most definitive, accurate, and accessible encyclopedia and reference for everything related to Star Trek. The English-language Memory Alpha started in November 2003. It currently consists of 61,127 articles and 67,134 files. If this is your first visit, please read an introduction to Memory Alpha.",
+        "linked_word": "Star Trek",
+        "start": 149,
+        "end": 158,
+        "url": "https://memory-alpha.fandom.com/wiki/Star_Trek"
+    },
+    {
+        "sentence": "Memory Alpha is a collaborative project to create the most definitive, accurate, and accessible encyclopedia and reference for everything related to Star Trek. The English-language Memory Alpha started in November 2003. It currently consists of 61,127 articles and 67,134 files. If this is your first visit, please read an introduction to Memory Alpha.",
+        "linked_word": "61,127 articles and 67,134 files",
+        "start": 245,
+        "end": 277,
+        "url": "https://memory-alpha.fandom.com/wiki/Special:Statistics"
+    },
+    {
+        "sentence": "Memory Alpha is a collaborative project to create the most definitive, accurate, and accessible encyclopedia and reference for everything related to Star Trek. The English-language Memory Alpha started in November 2003. It currently consists of 61,127 articles and 67,134 files. If this is your first visit, please read an introduction to Memory Alpha.",
+        "linked_word": "an introduction to Memory Alpha",
+        "start": 320,
+        "end": 351,
+        "url": "https://memory-alpha.fandom.com/wiki/Memory_Alpha:Introduction"
+    },
+    {
+        "sentence": "Section 31 was a clandestine organization which claimed to protect the security interests of United Earth, and later the United Federation of Planets. Officially-nonexistent, the organization's title came from the original Starfleet Charter, Article 14, Section 31 of which allowed for extraordinary measures to be taken in times of extreme threat. Section 31 was somewhat comparable to the Romulan Tal Shiar or Cardassian Obsidian Order.",
+        "linked_word": "Section 31",
+        "start": 0,
+        "end": 10,
+        "url": "https://memory-alpha.fandom.com/wiki/Section_31"
+    }
+]
